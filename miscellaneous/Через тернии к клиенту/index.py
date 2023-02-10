@@ -4,12 +4,13 @@ sorted_logs = []
 sum_time_list = []
 
 for i in range(n):
-    log = list(map(str,input().split()))
-    id = int(log[3])
+    inp_list = list(map(str,input().split()))
+    days, hours, minutes, id = map(int, inp_list[:4])
+    event = inp_list[4]
     if (id not in id_dict):
         id_dict[id] = []
-    if (log[4] != 'B'):
-        id_dict[id].append(int(log[0]) * 24 * 60 + int(log[1]) * 60 + int(log[2]))
+    if (event != 'B'):
+        id_dict[id].append(days * 24 * 60 + hours * 60 + minutes)
 
 for key in sorted(id_dict.keys()):
     sum = 0
@@ -21,4 +22,3 @@ for key in sorted(id_dict.keys()):
 
 
 print(' '.join(sum_time_list))
-
